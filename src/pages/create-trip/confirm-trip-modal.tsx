@@ -5,10 +5,14 @@ import Button from "../../components/button";
 interface ConfirmTripModalProps {
   setIsConfirmTripModalOpen: React.Dispatch<React.SetStateAction<boolean>>
   createTrip: (e: FormEvent<HTMLFormElement>) => void
+  setOwnerName: (name: string) => void;
+  setOwnerEmail: (email: string) => void
 }
 const ConfirmTripModal = ({
   setIsConfirmTripModalOpen,
-  createTrip
+  createTrip,
+  setOwnerName,
+  setOwnerEmail
 }: ConfirmTripModalProps) => {
   return (
     <div className="fixed inset-0 bg-black/60 flex items-center justify-center">
@@ -35,6 +39,7 @@ const ConfirmTripModal = ({
               type="name"
               name="name"
               placeholder="Digite seu nome completo"
+              onChange={e => setOwnerName(e.target.value)}
               className="text-zinc-400 bg-transparent outline-none flex-1 text-lg "
             />
           </div>
@@ -44,6 +49,7 @@ const ConfirmTripModal = ({
               type="email"
               name="email"
               placeholder="Digite seu e-mail pessoal"
+              onChange={e => setOwnerEmail(e.target.value)}
               className="text-zinc-400 bg-transparent outline-none flex-1 text-lg "
             />
           </div>

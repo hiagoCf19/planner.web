@@ -7,8 +7,11 @@ import Activities from "./activities";
 import DestinationAndDateHeader from "./destination-and-date-header";
 import Button from "../../components/button";
 
+
 const TripDetailsPage = () => {
   const [isCreateActivityModalOpen, setIsCreateActivityModalOpen] = useState(false);
+
+
   return (
     <div className="max-w-6xl px-6 py-10 mx-auto space-y-8">
       <DestinationAndDateHeader />
@@ -34,7 +37,9 @@ const TripDetailsPage = () => {
 
 
       {isCreateActivityModalOpen && (
-        <CreateActivityModal setIsCreateActivityModalOpen={setIsCreateActivityModalOpen} />
+        <CreateActivityModal
+          setIsCreateActivityModalOpen={setIsCreateActivityModalOpen}
+        />
       )}
     </div>
   );
