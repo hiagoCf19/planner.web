@@ -3,6 +3,7 @@ import Button from "../../components/button";
 import { useParams } from "react-router-dom";
 import { FormEvent } from "react";
 import { api } from "../../lib/axios";
+import { toast } from "sonner";
 
 interface CreateLinkModalProps {
   setIsCreateNewLinkModalOpen: (isOpen: boolean) => void
@@ -22,8 +23,15 @@ const CreateLinkModal = ({
     await api.post(`/trips/${tripId}/links`, {
       title,
       url
-    }).catch((e) => console.error(e))
-    setIsCreateNewLinkModalOpen(false);
+    }).then(() => {
+      toast.success("Link cadastrado com sucesso!")
+      setIsCreateNewLinkModalOpen(false);
+    }).catch((e) => {
+      console.error(e)
+      toast.error("Ocorreu um erro ao cadastrar o link.")
+    })
+
+
   }
 
 

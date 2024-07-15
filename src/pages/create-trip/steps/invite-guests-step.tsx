@@ -1,5 +1,4 @@
 import { ArrowRight, UserRoundPlus } from "lucide-react";
-import Button from "../../../components/button";
 
 interface InviteGuestsStepProps {
   setIsGuestsModalOpen: React.Dispatch<React.SetStateAction<boolean>>,
