@@ -25,10 +25,6 @@ const Activities = () => {
       })
   }, [tripId])
 
-
-
-
-
   return (
     <div className="space-y-8 ">
       {activities.map((activityWithDate, i) => (
