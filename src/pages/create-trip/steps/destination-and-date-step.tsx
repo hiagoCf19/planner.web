@@ -4,16 +4,23 @@ import { useState } from "react";
 import { DateRange, DayPicker } from "react-day-picker";
 import { format } from 'date-fns'
 import "react-day-picker/dist/style.css";
+import InviteGuestsStep from "./invite-guests-step";
 interface DestinationAndDateStepProps {
   isGuestsInputOpen: boolean;
   eventStartAndEndDates: DateRange | undefined;
+  emailsToInvite: string[];
+  setIsConfirmTripModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setIsGuestsInputOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsGuestsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setDestination: (destination: string) => void;
   setEventStartAndEndDates: (dates: DateRange | undefined) => void;
 }
 const DestinationAndDateStep = ({
   isGuestsInputOpen,
   eventStartAndEndDates,
+  emailsToInvite,
+  setIsConfirmTripModalOpen,
+  setIsGuestsModalOpen,
   setIsGuestsInputOpen,
   setDestination,
   setEventStartAndEndDates
@@ -29,8 +36,8 @@ const DestinationAndDateStep = ({
       .concat(format(eventStartAndEndDates.to, "d ' de 'LLL"))
     : null
   return (
-    <div className="h-16 bg-zinc-900 px-4 rounded-xl flex items-center shadow-shape gap-3">
-      <div className="flex items-center gap-2 flex-1">
+    <div className="sm:h-16 py-5 bg-zinc-900 px-4 rounded-xl flex flex-col sm:flex-row sm:items-center shadow-shape sm:gap-3 gap-5">
+      <div className="flex items-center gap-2 flex-1  ">
         <MapPin className="text-zinc-400 size-5" />
         <input
           disabled={isGuestsInputOpen}
@@ -46,7 +53,7 @@ const DestinationAndDateStep = ({
         onClick={() => setIsDatePickerOpen(true)}
       >
         <Calendar className="text-zinc-400 size-5" />
-        <span className="text-lg text-zinc-400 w-40 flex-1"
+        <span className="text-lg text-zinc-400 w-40 flex-1 truncate "
         >
           {displayedDate || 'Quando? '}
         </span>
@@ -67,7 +74,7 @@ const DestinationAndDateStep = ({
           </div>
         </div>
       )}
-      <div className="w-px h-6 bg-zinc-800" />
+      <div className="w-px h-6 bg-zinc-800 hidden sm:block " />
       {isGuestsInputOpen
         ? <Button
           variant={'secondary'}
@@ -81,6 +88,18 @@ const DestinationAndDateStep = ({
           Continuar
           <ArrowRight className="size-5" />
         </Button>}
+
+      {isGuestsInputOpen && (
+        <div className="sm:hidden space-y-3">
+          <div className="w-full h-0.5 bg-zinc-800 rounded-full " />
+          <InviteGuestsStep
+            emailsToInvite={emailsToInvite}
+            setIsConfirmTripModalOpen={setIsConfirmTripModalOpen}
+            setIsGuestsModalOpen={setIsGuestsModalOpen} />
+        </div>
+      )}
+
+
     </div>
   );
 }

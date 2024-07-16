@@ -17,10 +17,7 @@ function CreateTripPage() {
   const [ownerEmail, setOwnerEmail] = useState('');
   const [eventStartAndEndDates, setEventStartAndEndDates] = useState<DateRange | undefined>()
 
-  const [emailsToInvite, setEmailsToInvite] = useState([
-    'hiagoferreira@gmail.com',
-    'invnite@invite.com'
-  ])
+  const [emailsToInvite, setEmailsToInvite] = useState<string[]>([])
   const [isConfirmTripModalOpen, setIsConfirmTripModalOpen] = useState(false)
 
   const addNewEmailToInvite = (e: FormEvent<HTMLFormElement>) => {
@@ -68,7 +65,7 @@ function CreateTripPage() {
       <div className="max-w-3xl w-full px-6 text-center space-y-10">
         <div className="flex flex-col items-center gap-3">
           <img src="/logo.svg" alt="plann.er" />
-          <p className="text-zinc-300 text-lg ">Convide seus amigos e planeje sua próxima viagem!
+          <p className="text-zinc-400 text-lg ">Convide seus amigos e planeje sua próxima viagem!
           </p>
         </div>
 
@@ -77,17 +74,23 @@ function CreateTripPage() {
             isGuestsInputOpen={isGuestsInputOpen}
             setIsGuestsInputOpen={setIsGuestsInputOpen}
             setDestination={setDestination}
+            emailsToInvite={emailsToInvite}
+            setIsConfirmTripModalOpen={setIsConfirmTripModalOpen}
+            setIsGuestsModalOpen={setIsGuestsModalOpen}
             setEventStartAndEndDates={setEventStartAndEndDates}
             eventStartAndEndDates={eventStartAndEndDates}
           />
-          {isGuestsInputOpen && (
-            <InviteGuestsStep
-              emailsToInvite={emailsToInvite}
-              setIsConfirmTripModalOpen={setIsConfirmTripModalOpen}
-              setIsGuestsModalOpen={setIsGuestsModalOpen} />
-          )}
+
+          <div className="hidden sm:block">
+            {isGuestsInputOpen && (
+              <InviteGuestsStep
+                emailsToInvite={emailsToInvite}
+                setIsConfirmTripModalOpen={setIsConfirmTripModalOpen}
+                setIsGuestsModalOpen={setIsGuestsModalOpen} />
+            )}
+          </div>
         </div>
-        <p className="text-sm text-zinc-500 ">Ao planejar sua viagem pela plann.er você automaticamente concorda <br />com nossos <a href="#" className="text-zinc-300 underline">
+        <p className="text-sm text-zinc-500 ">Ao planejar sua viagem pela plann.er você automaticamente concorda <br className="hidden sm:block" />com nossos <a href="#" className="text-zinc-300 underline">
           termos de uso </a> e
           <a href="#" className="text-zinc-300 underline" > políticas de privacidade.
           </a>
@@ -100,6 +103,7 @@ function CreateTripPage() {
           setIsGuestsModalOpen={setIsGuestsModalOpen}
           addNewEmailToInvite={addNewEmailToInvite}
           removeEmailFromInvite={removeEmailFromInvite}
+
         />
       )}
       {isConfirmTripModalOpen && (
@@ -108,6 +112,8 @@ function CreateTripPage() {
           setIsConfirmTripModalOpen={setIsConfirmTripModalOpen}
           setOwnerName={setOwnerName}
           setOwnerEmail={setOwnerEmail}
+          destination={destination}
+          eventStartAndEndDates={eventStartAndEndDates}
         />
       )}
 
