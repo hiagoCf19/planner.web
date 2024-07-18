@@ -54,8 +54,8 @@ const Activities = () => {
             </div>
           ) : (<p className="" >Nenhuma atividade cadastrada nesta data</p>)}
         </div>
-
       ))}
+      <div className="sm:hidden h-10 w-full" />
     </div>
   );
 }

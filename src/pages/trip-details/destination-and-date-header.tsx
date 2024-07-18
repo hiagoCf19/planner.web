@@ -1,5 +1,4 @@
 import { MapPin, Calendar, Settings2 } from "lucide-react";
-import Button from "../../components/button";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { api } from "../../lib/axios";
@@ -24,38 +23,34 @@ const DestinationAndDateHeader = () => {
       })
   }, [tripId])
 
-
-
-
-  // const displayedDate = trip ? format(trip.starts_at, "d' de 'LLL").concat(' até ').concat(format(trip.ends_at, "d' de 'LLL"))
-  //   : null
   const formattedDates = trip &&
     format(parseISO(trip.startsAt), "d 'de' LLL", { locale: ptBR })
       .concat(' até ')
       .concat(format(parseISO(trip.endsAt), "d 'de' LLL", { locale: ptBR }))
 
-
-
-
-  return (<div className="px-4 h-16 rounded-xl bg-zinc-900 shadow-shape flex items-center justify-between">
-    <div className="flex items-center gap-2">
-      <MapPin className="size-5 text-zinc-400" />
-      <span className=" text-zinc-100">
-        {trip?.destination}
-      </span>
-    </div>
-    <div className="flex items-center gap-5">
+  return (
+    <div className=" sm:px-4 px-2 h-16 rounded-xl bg-zinc-900 shadow-shape flex items-center justify-between space-x-2">
       <div className="flex items-center gap-2">
-        <Calendar className="size-5 text-zinc-400" />
-        <span className=" text-zinc-100">{formattedDates} </span>
+        <MapPin className="size-5 text-zinc-400" />
+        <span className=" text-zinc-100 text-sm sm:text-base truncate">
+          {trip?.destination}
+        </span>
       </div>
-      <div className="w-px h-6 bg-zinc-800" />
-      <Button variant="secondary" >
-        Alterar local/data
-        <Settings2 className="size-5" />
-      </Button>
-    </div>
-  </div>);
+      <div className="flex items-center sm:gap-5 gap-2">
+        <div className="flex items-center sm:gap-2 flex-1">
+          <Calendar className="size-5 text-zinc-400 hidden sm:block" />
+          <span className=" text-zinc-100 text-sm sm:text-base truncate">{formattedDates}</span>
+        </div>
+        <div className="w-px h-6 bg-zinc-800 hidden sm:block" />
+
+        <button className="rounded-lg sm:px-5 p-1.5 font-medium flex items-center gap-2 justify-center bg-zinc-800 text-zinc-200 hover:bg-zinc-700">
+          <span className="hidden sm:block">
+            Alterar local/data
+          </span>
+          <Settings2 className="size-5" />
+        </button>
+      </div>
+    </div>);
 }
 
 export default DestinationAndDateHeader;

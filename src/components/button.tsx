@@ -6,7 +6,7 @@ interface ButtonProps extends ComponentProps<'button'>, VariantProps<typeof butt
 // Biblioteca tailwind-variants, importamos o tv e tudo que for igual nos botões usamos em base. Tudo que variar usamos em variants, onde colocamos o nome como primary.
 // Usamos o size para definir variantes de tamanho
 const buttonVariant = tv({
-  base: 'rounded-lg px-5 py-2 font-medium flex items-center gap-2 justify-center',
+  base: 'rounded-lg sm:px-5 px-3.5 py-2 font-medium flex items-center gap-2 justify-center',
   variants: {
     variant: {
       primary: 'bg-lime-300 text-lime-950 hover:bg-lime-400',
@@ -14,8 +14,7 @@ const buttonVariant = tv({
     },
     size: {
       default: 'py-2',
-      full: 'w-full h-11'
-
+      full: 'w-full h-11',
     }
   },
   defaultVariants: {

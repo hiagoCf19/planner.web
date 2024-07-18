@@ -36,8 +36,8 @@ const CreateLinkModal = ({
 
 
   return (
-    <div className="fixed inset-0 bg-black/60 flex items-center justify-center">
-      <div className="w-[640px] rounded-xl py-5 px-6 shadow-shape bg-zinc-900 space-y-5">
+    <div className="fixed sm:inset-0 inset-x-0 bottom-0 sm:bg-black/60 bg-black/90  flex sm:items-center items-end justify-center h-screen">
+      <div className="w-[640px] sm:rounded-xl py-5 px-6 shadow-shape bg-zinc-900 space-y-5">
         <div className="space-y-2">
           <div className="flex items-center justify-between">
             <h2 className="tetx-lg font-semibold">Cadastrar link</h2>
