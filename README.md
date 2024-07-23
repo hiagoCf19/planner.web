@@ -1,31 +1,28 @@
-# React + TypeScript + Vite
+# plann.er
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Descrição do Projeto
 
-Currently, two official plugins are available:
+O plann.er é um sistema de planejamento de viagens desenvolvido com Spring Boot, React e TypeScript. A plataforma permite que os usuários criem viagens, convidem participantes e gerenciem todos os aspectos de suas jornadas. Com o plann.er, é possível cadastrar atividades, adicionar links importantes e gerenciar convidados de forma prática e intuitiva.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Funcionalidades Principais
 
-## Expanding the ESLint configuration
+- **Criação de Viagens:** Os usuários podem criar novas viagens especificando o destino e as datas.
+- **Convite de Participantes:** Envie convites para amigos participarem da viagem, com confirmação via e-mail.
+- **Cadastro de Atividades:** Adicione e gerencie atividades planejadas para a viagem.
+- **Links Importantes:** Adicione links úteis relacionados à viagem, como reservas de hotéis ou restaurantes.
+- **Gerenciamento de Convidados:** Controle e visualize os participantes da viagem, facilitando a comunicação e o planejamento conjunto.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Tecnologias Utilizadas
 
-- Configure the top-level `parserOptions` property like this:
+- **Backend:** Spring Boot
+- **Frontend:** React, TypeScript
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Telas
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
-# planner.web
+### Home
+
+![Home](./public/planner-home.png)
+
+### Tela de Planejamento
+
+![Tela de Planejamento](./public/planner-trip.png)
